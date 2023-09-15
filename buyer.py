@@ -21,10 +21,10 @@ if __name__ == '__main__':
                         arr.append([bid['price'], bid['quantity'], i['ticker']])
                         res = requests.post('https://datsorange.devteam.games/LimitPriceBuy', headers={
                             'token': '64f8a82b0ee5c64f8a82b0ee60'},
-                            params={
+                            json={
                             "symbolId": 16,
-                            "price": 1,
-                            "quantity": max(0, cnt)
+                            "price": 900,
+                            "quantity": max(0, 1)
                         }).json()
                         cnt = 0
                         print(res)
