@@ -14,7 +14,7 @@ if __name__ == '__main__':
         for i in response.json():
             if i['bids']:
                 for bid in i['bids']:
-                    arr.append([bid['price'], bid['quantity'],i['ticker']])
+                    arr.append([bid['price'], bid['quantity'], i['ticker']])
         arr.sort()
         for i in arr:
             print(i)

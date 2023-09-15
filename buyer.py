@@ -23,7 +23,7 @@ if __name__ == '__main__':
                             'token': '64f8a82b0ee5c64f8a82b0ee60'},
                             json={
                             "symbolId": 16,
-                            "price": 900,
+                            "price": 100,
                             "quantity": max(0, 1)
                         }).json()
                         cnt = 0
