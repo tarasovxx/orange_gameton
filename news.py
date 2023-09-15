@@ -1,7 +1,7 @@
-
 if __name__ == '__main__':
     import requests
     from time import sleep
+
 
     url = 'https://datsorange.devteam.games/news/LatestNews5Minutes'
 
@@ -15,6 +15,8 @@ if __name__ == '__main__':
                 print(i)
                 dates.add(i['date'])
                 data.append([i['rate'], i['date'], i['text'], i['companiesAffected']])
+
+
         sleep(30)
 
 
