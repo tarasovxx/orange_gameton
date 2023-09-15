@@ -98,8 +98,8 @@ class Stock:
     @staticmethod
     def buy_stock(token: str) -> list[dict]:
         """
-        Список всех активов.
-        Возвращает список всех возможных активов
+        Заявки на покупку.
+        Возвращает количество активных заявок и их цену
         """
         response = make_request(
             url='https://datsorange.devteam.games/buyStock',
@@ -122,7 +122,7 @@ class News:
 
 class Info:
     @staticmethod
-    def info(token: str) -> list[dict]:
+    def info(token: str) -> dict:
         """
         Информация о счете
         """
