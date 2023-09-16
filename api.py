@@ -22,7 +22,7 @@ class Bid:
         ).ok
 
     @staticmethod
-    def limit_price_sell(token: str, symbol_id: int, price: int, quantity: int) -> bool:
+    def limit_price_sell(token: str, symbol_id: int, price: int, quantity: int) -> list[dict]:
         """
         Размещает заявку на продажу по цене не менее установленной
         """
@@ -31,10 +31,10 @@ class Bid:
             token=token,
             method='POST',
             json=dict(symbolId=symbol_id, price=price, quantity=quantity)
-        ).ok
+        ).json()
 
     @staticmethod
-    def limit_price_buy(token: str, symbol_id: int, price: int, quantity: int) -> bool:
+    def limit_price_buy(token: str, symbol_id: int, price: int, quantity: int) -> list[dict]:
         """
         Размещает заявку на покупку по цене не более установленной
         """
@@ -43,8 +43,7 @@ class Bid:
             token=token,
             method='POST',
             json=dict(symbolId=symbol_id, price=price, quantity=quantity)
-        ).ok
-
+        ).json()
     @staticmethod
     def best_price_sell(token: str, symbol_id: int, quantity: int) -> bool:
         """
@@ -130,3 +129,15 @@ class Info:
             url='https://datsorange.devteam.games/info',
             token=token
         ).json()
+
+    @staticmethod
+    def getCurBalance(token: str) -> int:
+        """
+        Возвращает текущий баланс в апельсинах
+        """
+        stock: dict = Info.info(token)
+        price = 0
+        for st in stock['assets']:
+            if st['id'] == 1:
+                price = st['quantity']
+        return price
